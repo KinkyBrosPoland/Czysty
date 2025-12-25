@@ -2204,7 +2204,7 @@
 	</iaixsl:if>
 <!-- (main_hotspot_zone1, 665eb8a60f3c16.35849446.5)-->
   <iaixsl:if test="page/hotspot/products_zone1">
-    <section id="main_hotspot_zone1" class="hotspot__wrapper">
+    <section id="main_hotspot_zone1" class="hotspot__wrapper section">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">1</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2421,7 +2421,7 @@
 	</iaixsl:if>
 <!-- (main_hotspot_zone2, 665eb93e7e6081.50686947.5)-->
   <iaixsl:if test="page/hotspot/products_zone2">
-    <section id="main_hotspot_zone2" class="hotspot__wrapper">
+    <section id="main_hotspot_zone2" class="hotspot__wrapper section --alt">
       <iaixsl:attribute name="data-pageType">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">2</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2551,7 +2551,7 @@
 	<iaixsl:if test="/shop/page/hotspot/products_zone2/@cache_html"> </iaixsl:if>
 <!-- (main_hotspot_zone3, 665eb971a8ea61.58725840.5)-->
   <iaixsl:if test="page/hotspot/products_zone3">
-    <section id="main_hotspot_zone3" class="hotspot__wrapper">
+    <section id="main_hotspot_zone3" class="hotspot__wrapper section">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">3</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2681,7 +2681,7 @@
 	<iaixsl:if test="/shop/page/hotspot/products_zone3/@cache_html"> </iaixsl:if>
 <!-- (main_hotspot_zone4, 665eb9a1dd1a85.03921466.5)-->
   <iaixsl:if test="page/hotspot/products_zone4">
-    <section id="main_hotspot_zone4" class="hotspot__wrapper">
+    <section id="main_hotspot_zone4" class="hotspot__wrapper section --alt">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">4</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2816,7 +2816,7 @@
 	<iaixsl:variable name="main_blog_view_all"/>
 
 	<iaixsl:if test="count(page/mainpage2/item) &gt; 0">
-		<section id="main_blog" class="section article">
+		<section id="main_blog" class="section article --alt">
 			<h2 class="headline__wrapper">
 				<a href="/blog-list.php" class="headline">
 					<iaixsl:attribute name="title">Kliknij, by zobaczyć wszystkie wpisy bloga</iaixsl:attribute>
