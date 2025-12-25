@@ -1596,6 +1596,34 @@
 						</iaixsl:otherwise>
 					</iaixsl:choose>
 
+					<iaixsl:if test="page/@type = 'main'">
+						<iaixsl:variable name="free_shipping_limit"><iaixsl:value-of select="/shop/basket/@shippinglimitfree_formatted"/></iaixsl:variable>
+						<div class="listing_badges listing_badges--hero">
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M3 7h11v5h4l3 3v2h-2a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H1v-2h2V7Zm2 10a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm12 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">
+									Darmowa dostawa od
+									<iaixsl:choose>
+										<iaixsl:when test="$free_shipping_limit != ''"><iaixsl:value-of select="$free_shipping_limit"/></iaixsl:when>
+										<iaixsl:otherwise>X zł</iaixsl:otherwise>
+									</iaixsl:choose>
+								</span>
+							</div>
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M12 5a7 7 0 1 1-6.32 4H3l3.5-3.5L10 9H7.64A5 5 0 1 0 12 7v-2Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">Zwroty 30 dni</span>
+							</div>
+						</div>
+					</iaixsl:if>
+
 					<!-- (menu_messages, 60dd8e79b18501.50382803.13)-->
 
         <iaixsl:variable name="rebates_code_used">Podany kod rabatowy został już wykorzystany.</iaixsl:variable>
@@ -2129,12 +2157,13 @@
                         </iaixsl:if>
                       </picture>
                     </iaixsl:when>
-                    <iaixsl:otherwise>
-                      <iaixsl:value-of disable-output-escaping="yes" select="text"/>
-                    </iaixsl:otherwise>
-                  </iaixsl:choose>
-                  <iaixsl:if test="not($bannerName = '')">
-                    <div class="main_slider__content container max-width-1200">
+                  <iaixsl:otherwise>
+                    <iaixsl:value-of disable-output-escaping="yes" select="text"/>
+                  </iaixsl:otherwise>
+                </iaixsl:choose>
+                <span class="main_slider__overlay" aria-hidden="true"></span>
+                <iaixsl:if test="not($bannerName = '')">
+                  <div class="main_slider__content container max-width-1200">
                       <h2 class="main_slider__label"><iaixsl:value-of select="$bannerName"/></h2>
                       <iaixsl:if test="not($bannerDescription = '')">
                         <p class="main_slider__description"><iaixsl:value-of select="$bannerDescription"/></p>
@@ -2194,6 +2223,19 @@
   </div>
 
 </iaixsl:if>
+<!-- (main_hero, 20240330.1)--->
+<section class="hero section" id="main_hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Twoja codzienna pielęgnacja bez kompromisów</p>
+      <h2 class="hero__title">Czyste formuły, skuteczne działanie i szybka dostawa do Twojej łazienki.</h2>
+      <div class="hero__actions">
+        <a class="btn --primary hero__cta" href="/search.php?promotion=1">Kup teraz</a>
+        <a class="btn --secondary hero__cta" href="/search.php?new=1">Zobacz nowości</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- (main_cms, 60dd8e795210d5.33684480.3)-->
 	<iaixsl:if test="page/text[@id='13']">
 			<iaixsl:for-each select="page/text[@id='13']">
@@ -2204,7 +2246,7 @@
 	</iaixsl:if>
 <!-- (main_hotspot_zone1, 665eb8a60f3c16.35849446.5)-->
   <iaixsl:if test="page/hotspot/products_zone1">
-    <section id="main_hotspot_zone1" class="hotspot__wrapper">
+    <section id="main_hotspot_zone1" class="hotspot__wrapper section">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">1</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2262,7 +2304,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2296,6 +2338,21 @@
         </div>
       </div>
     </div>
+  </template>
+  <template class="hotspot_add_to_basket">
+    <form class="add_to_basket" method="post" action="#">
+      <input type="hidden" name="product" value=""/>
+      <input type="hidden" name="size" value=""/>
+      <input class="add_to_basket__more_input buy__more_input" type="hidden" name="number" value="1" data-prev="1"/>
+      <button class="add_to_basket__button btn --primary" type="submit" data-text="Dodaj do koszyka">
+        <span>Dodaj do koszyka</span>
+      </button>
+    </form>
+  </template>
+  <template class="hotspot_add_to_basket_link">
+    <a class="add_to_basket__link btn --primary" tabindex="0">
+      <span>Dodaj do koszyka</span>
+    </a>
   </template>
   <template class="hotspot_opinion">
 		<div class="product__opinion">
@@ -2421,7 +2478,7 @@
 	</iaixsl:if>
 <!-- (main_hotspot_zone2, 665eb93e7e6081.50686947.5)-->
   <iaixsl:if test="page/hotspot/products_zone2">
-    <section id="main_hotspot_zone2" class="hotspot__wrapper">
+    <section id="main_hotspot_zone2" class="hotspot__wrapper section --alt">
       <iaixsl:attribute name="data-pageType">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">2</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2479,7 +2536,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2551,7 +2608,7 @@
 	<iaixsl:if test="/shop/page/hotspot/products_zone2/@cache_html"> </iaixsl:if>
 <!-- (main_hotspot_zone3, 665eb971a8ea61.58725840.5)-->
   <iaixsl:if test="page/hotspot/products_zone3">
-    <section id="main_hotspot_zone3" class="hotspot__wrapper">
+    <section id="main_hotspot_zone3" class="hotspot__wrapper section">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">3</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2609,7 +2666,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2681,7 +2738,7 @@
 	<iaixsl:if test="/shop/page/hotspot/products_zone3/@cache_html"> </iaixsl:if>
 <!-- (main_hotspot_zone4, 665eb9a1dd1a85.03921466.5)-->
   <iaixsl:if test="page/hotspot/products_zone4">
-    <section id="main_hotspot_zone4" class="hotspot__wrapper">
+    <section id="main_hotspot_zone4" class="hotspot__wrapper section --alt">
       <iaixsl:attribute name="data-pagetype">main</iaixsl:attribute>
       <iaixsl:attribute name="data-zone">4</iaixsl:attribute>
   <div class="hotspot skeleton">
@@ -2739,7 +2796,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2816,7 +2873,7 @@
 	<iaixsl:variable name="main_blog_view_all"/>
 
 	<iaixsl:if test="count(page/mainpage2/item) &gt; 0">
-		<section id="main_blog" class="section article">
+		<section id="main_blog" class="section article --alt">
 			<h2 class="headline__wrapper">
 				<a href="/blog-list.php" class="headline">
 					<iaixsl:attribute name="title">Kliknij, by zobaczyć wszystkie wpisy bloga</iaixsl:attribute>
