@@ -455,14 +455,16 @@ body {
     margin     : 0;
     width      : 100%;
     font-family: var(--font-family);
-    font-size  : 1.4rem;
-    line-height: 1.3;
-    color      : #434f48;
-    background : #fff;
+    font-size  : 1.6rem;
+    line-height: 1.6;
+    color      : var(--text-color);
+    background : var(--page-background-color);
     padding    : 60px var(--row_spacer, 1.5rem) 0;
     padding    : 60px calc(var(--row_spacer, 1.5rem) + env(safe-area-inset-right)) 0;
     overflow-x : hidden;
-    overflow-y : visible
+    overflow-y : visible;
+    -webkit-font-smoothing: antialiased;
+    text-rendering        : optimizeLegibility
 }
 
 @supports(overflow:clip) {
@@ -500,38 +502,40 @@ input {
 }
 
 input[type='text'] {
-    height            : 35px;
-    padding           : 5px;
+    height            : 42px;
+    padding           : 0.8rem 1rem;
     font-size         : 1em;
-    box-shadow        : none;
+    box-shadow        : var(--shadow-sm);
     -webkit-appearance: none;
-    color             : #434f48;
-    border            : 1px solid #c4c7c8;
-    background        : #fff;
-    border-radius     : 0
+    color             : var(--text-color);
+    border            : 1px solid var(--border-color);
+    background        : var(--surface-color);
+    border-radius     : var(--radius-sm);
+    transition        : border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base)
 }
 
 @media(min-width:757px) {
     input[type='text'] {
-        height: 40px
+        height: 46px
     }
 }
 
 input[type='password'] {
-    height            : 35px;
-    padding           : 5px;
+    height            : 42px;
+    padding           : 0.8rem 1rem;
     font-size         : 1em;
-    box-shadow        : none;
+    box-shadow        : var(--shadow-sm);
     -webkit-appearance: none;
-    color             : #434f48;
-    border            : 1px solid #c4c7c8;
-    background        : #fff;
-    border-radius     : 0
+    color             : var(--text-color);
+    border            : 1px solid var(--border-color);
+    background        : var(--surface-color);
+    border-radius     : var(--radius-sm);
+    transition        : border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base)
 }
 
 @media(min-width:757px) {
     input[type='password'] {
-        height: 40px
+        height: 46px
     }
 }
 
@@ -545,9 +549,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow     : 0 0 0 30px #fff inset !important;
-    border                 : 1px solid #c4c7c8;
-    -webkit-text-fill-color: #434f48
+    -webkit-box-shadow     : 0 0 0 30px var(--surface-color) inset !important;
+    border                 : 1px solid var(--border-color);
+    -webkit-text-fill-color: var(--text-color)
 }
 
 input[type='file'] {
@@ -555,53 +559,72 @@ input[type='file'] {
 }
 
 textarea {
-    padding      : 10px 10px 10px 20px;
+    padding      : 1rem 1.2rem;
     font-size    : 1em;
-    color        : #434f48;
-    border       : 1px solid #c4c7c8;
-    background   : #fff;
-    box-shadow   : none;
-    border-radius: 0
+    color        : var(--text-color);
+    border       : 1px solid var(--border-color);
+    background   : var(--surface-color);
+    box-shadow   : var(--shadow-sm);
+    border-radius: var(--radius-sm);
+    transition   : border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base)
 }
 
 select {
-    padding      : 5px;
+    padding      : 0.8rem 1rem;
     font-size    : 1em;
-    color        : #434f48;
-    border       : 1px solid #c4c7c8;
-    background   : #fff;
-    box-shadow   : none;
-    border-radius: 0
+    color        : var(--text-color);
+    border       : 1px solid var(--border-color);
+    background   : var(--surface-color);
+    box-shadow   : var(--shadow-sm);
+    border-radius: var(--radius-sm);
+    transition   : border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base)
+}
+
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='tel']:focus,
+input[type='number']:focus,
+input[type='search']:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow  : 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline     : 0
 }
 
 h1 {
     font-size  : 1.333em;
     font-weight: bold;
-    color      : #333
+    color      : var(--text-color);
+    font-family: var(--font-family-headline)
 }
 
 h2 {
     font-size  : 1.167em;
     font-weight: bold;
-    color      : #333
+    color      : var(--text-color);
+    font-family: var(--font-family-headline)
 }
 
 h3 {
     font-size  : 1em;
     font-weight: bold;
-    color      : #333
+    color      : var(--text-color);
+    font-family: var(--font-family-headline)
 }
 
 a {
     outline        : 0;
-    color          : #434f48;
-    transition     : background-color .2s, color .2s, border .2s;
-    text-decoration: underline
+    color          : var(--primary-color);
+    transition     : color var(--transition-base), background-color var(--transition-base), border var(--transition-base);
+    text-decoration: none
 }
 
 a:hover {
     outline: 0;
-    color  : #434f48
+    color  : var(--primary-color-hover);
+    text-decoration: underline
 }
 
 a:focus,
@@ -872,14 +895,26 @@ body#trusted_shops_fix div[id*='tscard'] {
 
 :root {
     --font-base                                             : 1.6rem;
-    --font-family                                           : 'Roboto', 'Open sans';
-    --font-family-headline                                  : 'Bebas Neue', 'Arial', 'Open sans';
+    --font-family                                           : 'Inter', 'Roboto', 'Open sans', sans-serif;
+    --font-family-headline                                  : 'Poppins', 'Bebas Neue', 'Arial', 'Open sans', sans-serif;
     --gray-300                                              : #d1d5db;
     --gray-500                                              : #6b7280;
     --pink-600                                              : #db2777;
     --indigo-600                                            : #4f46e5;
-    --primary-color                                         : #333;
+    --primary-color                                         : #2563eb;
+    --primary-color-hover                                   : #1d4ed8;
     --background-color                                      : #fff;
+    --page-background-color                                 : #f8fafc;
+    --surface-color                                         : #fff;
+    --text-color                                            : #0f172a;
+    --text-muted                                            : #64748b;
+    --border-color                                          : #e2e8f0;
+    --shadow-sm                                             : 0 1px 2px rgba(15, 23, 42, 0.08);
+    --shadow-md                                             : 0 12px 30px rgba(15, 23, 42, 0.12);
+    --radius-sm                                             : 6px;
+    --radius-md                                             : 12px;
+    --radius-lg                                             : 18px;
+    --transition-base                                       : 0.2s ease;
     --color-success                                         : #38b759;
     --color-error                                           : #e35c5c;
     --color-label-promo                                     : #fff;
@@ -7429,11 +7464,11 @@ button.swiper-pagination-bullet {
 button {
     outline           : 0;
     -webkit-appearance: none;
-    border-radius     : 0;
+    border-radius     : var(--radius-md);
     cursor            : pointer;
     border            : 0;
     background        : 0;
-    transition        : background-color .2s, color .2s, border .2s
+    transition        : background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base)
 }
 
 button.btn {
@@ -7455,14 +7490,17 @@ button.btn.--large {
     font-family    : var(--font-family);
     display        : inline-block;
     text-decoration: none;
-    color          : #434f48;
+    color          : var(--text-color);
     width          : 100%;
     text-align     : center;
     cursor         : pointer;
     font-size      : 1.2rem;
     padding        : .9rem 1rem;
-    font-weight    : normal;
-    transition     : background-color .2s, color .2s, border-color .2s
+    font-weight    : 600;
+    border-radius  : var(--radius-md);
+    background     : var(--surface-color);
+    box-shadow     : var(--shadow-sm);
+    transition     : background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base)
 }
 
 @media(min-width:757px) {
@@ -7472,7 +7510,7 @@ button.btn.--large {
 }
 
 .btn:hover {
-    color: #434f48
+    color: var(--text-color)
 }
 
 .btn.--extrasmall {
@@ -7485,27 +7523,27 @@ button.btn.--large {
 }
 
 .btn.--medium.--solid {
-    background: #434f48;
-    border    : 1px solid #434f48;
+    background: var(--primary-color);
+    border    : 1px solid var(--primary-color);
     color     : #fff
 }
 
 .btn.--medium.--solid:hover {
-    background: #808677;
-    border    : 1px solid #808677;
+    background: var(--primary-color-hover);
+    border    : 1px solid var(--primary-color-hover);
     color     : #fff
 }
 
 .btn.--medium.--outline {
-    background: #fff;
-    border    : 1px solid #434f48;
-    color     : #434f48
+    background: transparent;
+    border    : 1px solid var(--primary-color);
+    color     : var(--primary-color)
 }
 
 .btn.--medium.--outline:hover {
-    background: #fff;
-    border    : 1px solid #808677;
-    color     : #808677
+    background: rgba(37, 99, 235, 0.08);
+    border    : 1px solid var(--primary-color-hover);
+    color     : var(--primary-color-hover)
 }
 
 .btn.--large {
@@ -7515,53 +7553,53 @@ button.btn.--large {
 }
 
 .btn.--large.--solid {
-    background: #434f48;
-    border    : 1px solid #434f48;
+    background: var(--primary-color);
+    border    : 1px solid var(--primary-color);
     color     : #fff
 }
 
 .btn.--large.--solid:hover {
-    background: #808677;
-    border    : 1px solid #808677;
+    background: var(--primary-color-hover);
+    border    : 1px solid var(--primary-color-hover);
     color     : #fff
 }
 
 .btn.--large.--outline {
-    background: #fff;
-    border    : 1px solid #434f48;
-    color     : #434f48
+    background: transparent;
+    border    : 1px solid var(--primary-color);
+    color     : var(--primary-color)
 }
 
 .btn.--large.--outline:hover {
-    background: #fff;
-    border    : 1px solid #808677;
-    color     : #808677
+    background: rgba(37, 99, 235, 0.08);
+    border    : 1px solid var(--primary-color-hover);
+    color     : var(--primary-color-hover)
 }
 
 .btn.--solid {
-    background   : #434f48;
-    border       : 1px solid #434f48;
+    background   : var(--primary-color);
+    border       : 1px solid var(--primary-color);
     color        : #fff;
-    border-radius: 0
+    border-radius: var(--radius-md)
 }
 
 .btn.--solid:hover {
-    background: #808677;
-    border    : 1px solid #808677;
+    background: var(--primary-color-hover);
+    border    : 1px solid var(--primary-color-hover);
     color     : #fff
 }
 
 .btn.--outline {
-    background   : #fff;
-    border       : 1px solid #434f48;
-    color        : #434f48;
-    border-radius: 0
+    background   : transparent;
+    border       : 1px solid var(--primary-color);
+    color        : var(--primary-color);
+    border-radius: var(--radius-md)
 }
 
 .btn.--outline:hover {
-    background: #fff;
-    border    : 1px solid #808677;
-    color     : #808677
+    background: rgba(37, 99, 235, 0.08);
+    border    : 1px solid var(--primary-color-hover);
+    color     : var(--primary-color-hover)
 }
 
 .btn.--icon-left,
