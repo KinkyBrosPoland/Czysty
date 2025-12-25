@@ -4998,6 +4998,15 @@
 
 		</section>
 
+		<iaixsl:if test="/shop/page/@type = 'basketedit' and /shop/basket/@count &gt; 0">
+			<div class="sticky-cta --basket">
+				<a class="sticky-cta__button btn --solid --large">
+					<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/action/order1/@url"/></iaixsl:attribute>
+					Przejdź do płatności
+				</a>
+			</div>
+		</iaixsl:if>
+
 		<iaixsl:if test="/shop/basket/shipping_time"> </iaixsl:if>
 		<iaixsl:if test="/shop/page/basket-details/product/price/@detalprice_net_formatted"> </iaixsl:if>
 		<iaixsl:if test="/shop/page/basket-details/product/price/@maxprice_formatted"> </iaixsl:if>
@@ -6270,7 +6279,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">

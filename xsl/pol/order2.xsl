@@ -4943,6 +4943,9 @@
 					</iaixsl:if>
 					<button type="submit" class="cop_buttons__button btn --solid --large --buy"><span class="cop_buttons__button_text">Akceptuję, zamawiam i płacę</span><span class="cop_buttons__cost"/></button>
 				</div>
+				<div class="sticky-cta --checkout">
+					<button type="submit" class="sticky-cta__button btn --solid --large">Przejdź do płatności</button>
+				</div>
 				<iaixsl:if test="/shop/oneclick/payment or /shop/inpostCheckout/payment[@id = 'inpostPay']">
 					<div class="cop_summary__item --oneclick cop_oneclick">
 						<div class="cop_oneclick__label">Możesz kupić także poprzez:</div>
