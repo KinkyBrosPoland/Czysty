@@ -3726,6 +3726,46 @@
 <!-- (jquery, 66868303e83295.79660983.2)-->
 		</footer>
 	</iaixsl:if>
+	<nav class="bottom_nav" aria-label="Dolna nawigacja">
+		<a>
+			<iaixsl:attribute name="class">bottom_nav__link<iaixsl:if test="/shop/page/@type = 'main'"> --active</iaixsl:if></iaixsl:attribute>
+			<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/@baseurl"/></iaixsl:attribute>
+			<iaixsl:attribute name="aria-label">Home</iaixsl:attribute>
+			<i class="icon-home"/>
+			<span class="bottom_nav__label">Home</span>
+		</a>
+		<a>
+			<iaixsl:attribute name="class">bottom_nav__link<iaixsl:if test="/shop/page/@type = 'navigation'"> --active</iaixsl:if></iaixsl:attribute>
+			<iaixsl:attribute name="href">#menu_categories</iaixsl:attribute>
+			<iaixsl:attribute name="aria-label">Kategorie</iaixsl:attribute>
+			<i class="icon-th-large"/>
+			<span class="bottom_nav__label">Kategorie</span>
+		</a>
+		<a>
+			<iaixsl:attribute name="class">bottom_nav__link<iaixsl:if test="/shop/page/@type = 'search' or /shop/page/@type = 'searching'"> --active</iaixsl:if></iaixsl:attribute>
+			<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/action/search/@url"/></iaixsl:attribute>
+			<iaixsl:attribute name="aria-label">Wyszukiwarka</iaixsl:attribute>
+			<i class="icon-search"/>
+			<span class="bottom_nav__label">Wyszukiwarka</span>
+		</a>
+		<a>
+			<iaixsl:attribute name="class">bottom_nav__link bottom_nav__link--basket<iaixsl:if test="/shop/page/@type = 'basketedit' or starts-with(/shop/page/@type, 'order') or /shop/page/@type = 'place-order'"> --active</iaixsl:if></iaixsl:attribute>
+			<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/basket/@link"/></iaixsl:attribute>
+			<iaixsl:attribute name="aria-label">Koszyk</iaixsl:attribute>
+			<iaixsl:if test="/shop/basket/@count &gt; 0">
+				<span class="bottom_nav__badge"><iaixsl:value-of select="/shop/basket/@count"/></span>
+			</iaixsl:if>
+			<i class="icon-basket"/>
+			<span class="bottom_nav__label">Koszyk</span>
+		</a>
+		<a>
+			<iaixsl:attribute name="class">bottom_nav__link<iaixsl:if test="/shop/page/@type = 'login' or /shop/page/@type = 'signin' or starts-with(/shop/page/@type, 'client')"> --active</iaixsl:if></iaixsl:attribute>
+			<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/action/login/@url"/></iaixsl:attribute>
+			<iaixsl:attribute name="aria-label">Konto</iaixsl:attribute>
+			<i class="icon-user"/>
+			<span class="bottom_nav__label">Konto</span>
+		</a>
+	</nav>
 	<iaixsl:variable name="projector_script_bottom">true</iaixsl:variable>
 	<iaixsl:if test="/shop/page/@type = 'main' or /shop/page/@type = 'search' or /shop/page/@type = 'place-order' or /shop/page/@type = 'noproduct' or ($projector_script_bottom and /shop/page/@type = 'projector')">
 		<script src="/gfx/pol/jquery.js.gzip?r=1765442856"></script>
