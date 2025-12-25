@@ -1530,3 +1530,12 @@ div.rma_list_item2{border-bottom:1px solid #c4c7c8;line-height:1.2;vertical-alig
 .returnDetails_smile span{display:block}.returnDetails_smile__sub,.returnDetails_smile span{font-size:1.3rem;line-height:1.8rem}.returnDetails_smile__button{margin:var(--margin-md) 0}.returnDetails_smile__button,.returnDetails_smile__button .btn{font-weight:700}@media(max-width:978px){.returnDetails_smile__button,.returnDetails_smile__button .btn{width:100%}}.returnDetails_smile__condition{position:relative;font-size:1.3rem;line-height:1.8rem;align-self:center;justify-self:center;width:100%;display:flex;align-items:center;justify-content:center}
 .returnDetails_smile__condition span{background:#fff;padding:0 var(--padding-2xs)}.returnDetails_smile__condition:before{content:'';background:#c4c7c8;position:absolute;width:100%;height:1px;top:50%;transform:translateY(-50%);z-index:-1}@media(min-width:979px){.returnDetails_smile__condition{height:100%;width:auto}.returnDetails_smile__condition span{padding:var(--padding-2xs) 0}.returnDetails_smile__condition:before{width:1px;height:100%;top:0;left:50%;transform:translateX(-50%)}
 }
+.icon-home:before{content:"\F015" / ""}@supports not(content:"\F015"/ ""){.icon-home:before{content:"\F015"}}
+@media(max-width:978px){body{padding-bottom:calc(var(--bottom-nav-height,60px) + env(safe-area-inset-bottom))}}
+.bottom_nav{--bottom-nav-height:60px;position:fixed;left:0;right:0;bottom:0;height:var(--bottom-nav-height);padding:0 calc(var(--row_spacer, 1.5rem) + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(var(--row_spacer, 1.5rem) + env(safe-area-inset-left));background:#fff;border-top:1px solid #c4c7c8;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000}
+@media(min-width:979px){.bottom_nav{display:none}}
+.bottom_nav__link{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-decoration:none;color:#6b7280;font-size:1.2rem;position:relative}
+.bottom_nav__link i{font-size:2rem;line-height:1}
+.bottom_nav__link.--active{color:#333;font-weight:700}
+.bottom_nav__label{font-size:1rem;text-transform:none}
+.bottom_nav__badge{position:absolute;top:.3rem;right:25%;min-width:1.6rem;height:1.6rem;padding:0 .4rem;border-radius:999px;background:#e2187d;color:#fff;font-size:.9rem;line-height:1.6rem;font-weight:700;text-align:center}
