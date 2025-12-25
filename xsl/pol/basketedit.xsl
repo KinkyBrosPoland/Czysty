@@ -5567,6 +5567,26 @@
 			</iaixsl:if>
 		</div>
 	</iaixsl:if>
+	<div class="basket__secure_payments">
+		<h2 class="basket__secure_payments_title">Bezpieczne płatności</h2>
+		<div class="basket__secure_payments_icons" aria-hidden="true">
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 18a8.8 8.8 0 0 1-6-8.3V6.3l6-2.2 6 2.2v5.4A8.8 8.8 0 0 1 12 20Zm3-10-4 4-2-2 1.4-1.4L11 12.2l2.6-2.6L15 10Z" fill="currentColor"/>
+				</svg>
+			</span>
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M3 6h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 3v2h18V9H3Zm3 6h4v-2H6v2Z" fill="currentColor"/>
+				</svg>
+			</span>
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Zm2 6h2v-3h-2v3Z" fill="currentColor"/>
+				</svg>
+			</span>
+		</div>
+	</div>
 <!-- (division, 66e2f82c813af3.98668798.4)-->
   
   <iaixsl:if test="/shop/allow_division_order/@is_active = 'true' and not(count(page/basket-details/product[@division='later']) = 0 or count(page/basket-details/product[@division='now']) = 0)">

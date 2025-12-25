@@ -1596,6 +1596,34 @@
 						</iaixsl:otherwise>
 					</iaixsl:choose>
 
+					<iaixsl:if test="page/@type = 'main'">
+						<iaixsl:variable name="free_shipping_limit"><iaixsl:value-of select="/shop/basket/@shippinglimitfree_formatted"/></iaixsl:variable>
+						<div class="listing_badges listing_badges--hero">
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M3 7h11v5h4l3 3v2h-2a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H1v-2h2V7Zm2 10a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm12 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">
+									Darmowa dostawa od
+									<iaixsl:choose>
+										<iaixsl:when test="$free_shipping_limit != ''"><iaixsl:value-of select="$free_shipping_limit"/></iaixsl:when>
+										<iaixsl:otherwise>X zł</iaixsl:otherwise>
+									</iaixsl:choose>
+								</span>
+							</div>
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M12 5a7 7 0 1 1-6.32 4H3l3.5-3.5L10 9H7.64A5 5 0 1 0 12 7v-2Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">Zwroty 30 dni</span>
+							</div>
+						</div>
+					</iaixsl:if>
+
 					<!-- (menu_messages, 60dd8e79b18501.50382803.13)-->
 
         <iaixsl:variable name="rebates_code_used">Podany kod rabatowy został już wykorzystany.</iaixsl:variable>
