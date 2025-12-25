@@ -2262,7 +2262,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2479,7 +2479,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2609,7 +2609,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2739,7 +2739,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
