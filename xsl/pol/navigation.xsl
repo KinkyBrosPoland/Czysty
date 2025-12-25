@@ -302,7 +302,7 @@
 
 		<iaixsl:if test="not(action/set_render/item) or (action/set_render/item/@name = 'head')">
 			<header>
-				<iaixsl:attribute name="class"><iaixsl:if test="count(commercial_banner/link) &gt; 0"> commercial_banner</iaixsl:if></iaixsl:attribute>
+				<iaixsl:attribute name="class">site_header<iaixsl:if test="count(commercial_banner/link) &gt; 0"> commercial_banner</iaixsl:if></iaixsl:attribute>
 				<!-- (menu_javascript, 60dd8e8cd12ec2.99578279.36)-->
   <script class="ajaxLoad">app_shop.vars.vat_registered=&quot;<iaixsl:value-of select="/shop/contact/owner/@vat_registered"/>&quot;;app_shop.vars.currency_format=&quot;<iaixsl:value-of select="/shop/currency/option[@selected='true']/@currency_format"/>&quot;;<iaixsl:if test="/shop/currency/option[@selected='true']/@currency_before_value">app_shop.vars.currency_before_value=<iaixsl:value-of select="/shop/currency/option[@selected='true']/@currency_before_value"/>;</iaixsl:if><iaixsl:if test="/shop/currency/option[@selected='true']/@currency_space">app_shop.vars.currency_space=<iaixsl:value-of select="/shop/currency/option[@selected='true']/@currency_space"/>;</iaixsl:if>app_shop.vars.symbol=&quot;<iaixsl:value-of select="/shop/currency/option[@selected='true']/@symbol"/>&quot;;app_shop.vars.id=&quot;<iaixsl:value-of select="/shop/currency/option[@selected='true']/@id"/>&quot;;app_shop.vars.baseurl=&quot;<iaixsl:value-of select="/shop/@baseurl"/>&quot;;app_shop.vars.sslurl=&quot;<iaixsl:value-of select="/shop/@sslurl"/>&quot;;app_shop.vars.curr_url=&quot;<iaixsl:value-of select="/shop/navigation/current/@curr_url"/>&quot;;<iaixsl:if test="/shop/basket/@login">app_shop.vars.logged=1;</iaixsl:if>var currency_decimal_separator=&apos;<iaixsl:value-of select="/shop/currency/option[@selected='true']/@currency_decimal_separator"/>&apos;;var currency_grouping_separator=&apos;<iaixsl:value-of select="/shop/currency/option[@selected='true']/@currency_grouping_separator"/>&apos;;<iaixsl:if test="/shop/form_data/upload_file/blacklist_extension/param">app_shop.vars.blacklist_extension=[<iaixsl:for-each select="/shop/form_data/upload_file/blacklist_extension/param"><iaixsl:if test="not(position()=1)">,</iaixsl:if>&quot;<iaixsl:value-of select="@type"/>&quot;</iaixsl:for-each>];</iaixsl:if><iaixsl:if test="/shop/form_data/upload_file/blacklist_mime/param">app_shop.vars.blacklist_mime=[<iaixsl:for-each select="/shop/form_data/upload_file/blacklist_mime/param"><iaixsl:if test="not(position()=1)">,</iaixsl:if>&quot;<iaixsl:value-of select="@type"/>&quot;</iaixsl:for-each>];</iaixsl:if><iaixsl:if test="/shop/contact/link/@url">app_shop.urls.contact=&quot;<iaixsl:value-of select="/shop/contact/link/@url"/>&quot;;</iaixsl:if></script>
   <div id="viewType" style="display:none"/>
@@ -496,157 +496,158 @@
 	</form>
 <!-- (top_menu_wrapper, 6846f75e7e8ce9.23903861.6)-->
 <div id="menu_top" class="menu_top">
-	<iaixsl:if test="(((count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)) and not(/shop/select_language/@country_first = 'true')) or (count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true')">
-		<div id="menu_settings" class="align-items-center justify-content-center justify-content-lg-end">
-			<iaixsl:if test="count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true'">
-				<iaixsl:attribute name="class">align-items-center justify-content-center justify-content-lg-end --select_language</iaixsl:attribute>
-			</iaixsl:if>
-			<iaixsl:if test="((count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)) and not(/shop/select_language/@country_first = 'true')">
-			<div class="open_trigger hover__wrapper --hover_touch" tabindex="0">
-				<iaixsl:attribute name="aria-label">Kliknij, aby zmienić <iaixsl:if test="count(/shop/language/option) &gt; 1">język<iaixsl:if test="count(/shop/currency/option) &gt; 1 or count(/shop/countries/country) &gt; 1">, </iaixsl:if></iaixsl:if><iaixsl:if test="count(/shop/currency/option) &gt; 1">walutę<iaixsl:if test="count(/shop/countries/country) &gt; 1">, </iaixsl:if></iaixsl:if><iaixsl:if test="count(/shop/countries/country) &gt; 1">kraj dostawy</iaixsl:if></iaixsl:attribute>
-					<span>
-						<iaixsl:choose>
-							<iaixsl:when test="count(/shop/language/option) &gt; 1">
-								<iaixsl:attribute name="class">d-none d-md-inline-block flag flag_<iaixsl:value-of select="/shop/language/option[@selected='true']/@id"/></iaixsl:attribute>
-							</iaixsl:when>
-							<iaixsl:when test="count(/shop/currency/option) &gt; 1">
-								<iaixsl:attribute name="class">d-none d-md-inline-block flag_txt</iaixsl:attribute>
-								<iaixsl:value-of select="/shop/currency/option[@selected='true']/@symbol"/>
-							</iaixsl:when>
-							<iaixsl:when test="count(/shop/countries/country) &gt; 1">
-								<iaixsl:attribute name="class">d-none d-md-inline-block flag_txt</iaixsl:attribute>
-								<i class="icon-truck"/>
-							</iaixsl:when>
-						</iaixsl:choose>
-					</span>
-
-					<i class="icon-angle-down d-none d-md-inline-block"/>
-
-				<iaixsl:if test="(count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)">
-					<form class="hover__element --right" action="/settings.php" method="post">
-						<iaixsl:if test="/shop/action/settings/@url">
-							<iaixsl:attribute name="action"><iaixsl:value-of select="/shop/action/settings/@url"/></iaixsl:attribute>
-						</iaixsl:if>
-
-						<ul>
-							
-							<iaixsl:if test="count(/shop/language/option) &gt; 1">
-								<li>
-									<div class="form-group">
-										<span class="menu_settings_lang_label">Język</span>
-
-										<iaixsl:for-each select="/shop/language/option">
-											<div class="radio">
-												<label>
-													<input type="radio" name="lang">
-														<iaixsl:if test="@selected='true'"><iaixsl:attribute name="checked">checked</iaixsl:attribute></iaixsl:if>
-														<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
-													</input>
-													<span>
-														<iaixsl:attribute name="class">flag flag_<iaixsl:value-of select="@id"/></iaixsl:attribute>
-													</span>
-													<span><iaixsl:value-of select="@name"/></span>
-												</label>
-											</div>
-										</iaixsl:for-each>
-									</div>
-								</li>
-							</iaixsl:if>
-
-							<iaixsl:if test="count(/shop/currency/option) &gt; 1 or count(/shop/countries/country) &gt; 1">
-								<li>
-									<iaixsl:if test="count(/shop/currency/option) &gt; 1">
-										<div class="form-group">
-											<span for="menu_settings_curr">Waluta</span>
-
-											<div class="select-after">
-												<select class="form-control" name="curr" id="menu_settings_curr">
-													<iaixsl:attribute name="aria-label">Waluta</iaixsl:attribute>
-													<iaixsl:for-each select="/shop/currency/option">
-														<option>
-															<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
-															<iaixsl:choose>
-																<iaixsl:when test="@selected='true'">
-																	<iaixsl:attribute name="selected">selected</iaixsl:attribute>
-																	<iaixsl:value-of select="@symbol"/>
-																</iaixsl:when>
-																<iaixsl:otherwise>
-																	<iaixsl:value-of select="@symbol"/> (1 <iaixsl:value-of select="/shop/currency/option[@selected='true']/@symbol"/> = <iaixsl:value-of select="@rate"/>  <iaixsl:value-of select="@symbol"/>)
-																</iaixsl:otherwise>
-															</iaixsl:choose>
-														</option>
-													</iaixsl:for-each>
-												</select>
-											</div>
-										</div>
-									</iaixsl:if>
-									<iaixsl:if test="count(/shop/countries/country) &gt; 1">
-										<div class="form-group">
-											<span for="menu_settings_country">Dostawa do</span>
-
-											<div class="select-after">
-												<select class="form-control" name="country" id="menu_settings_country">
-													<iaixsl:attribute name="aria-label">Dostawa do</iaixsl:attribute>
-													<iaixsl:for-each select="/shop/countries/country">
-														<option>
-															<iaixsl:if test="@selected='true'"><iaixsl:attribute name="selected">selected</iaixsl:attribute></iaixsl:if>
-															<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
-															<iaixsl:value-of select="@name"/>
-														</option>
-													</iaixsl:for-each>
-												</select>
-											</div>
-										</div>
-									</iaixsl:if>
-								</li>
-							</iaixsl:if>
-							<li class="buttons">
-								<button class="btn --solid --large" type="submit">
-									Zastosuj zmiany
-								</button>
-							</li>
-						</ul>
-					</form>
+	<div class="menu_top__settings">
+		<iaixsl:if test="(((count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)) and not(/shop/select_language/@country_first = 'true')) or (count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true')">
+			<div id="menu_settings" class="align-items-center justify-content-center justify-content-lg-end">
+				<iaixsl:if test="count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true'">
+					<iaixsl:attribute name="class">align-items-center justify-content-center justify-content-lg-end --select_language</iaixsl:attribute>
 				</iaixsl:if>
-				</div>
-			</iaixsl:if>
+				<iaixsl:if test="((count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)) and not(/shop/select_language/@country_first = 'true')">
+				<div class="open_trigger hover__wrapper --hover_touch" tabindex="0">
+					<iaixsl:attribute name="aria-label">Kliknij, aby zmienić <iaixsl:if test="count(/shop/language/option) &gt; 1">język<iaixsl:if test="count(/shop/currency/option) &gt; 1 or count(/shop/countries/country) &gt; 1">, </iaixsl:if></iaixsl:if><iaixsl:if test="count(/shop/currency/option) &gt; 1">walutę<iaixsl:if test="count(/shop/countries/country) &gt; 1">, </iaixsl:if></iaixsl:if><iaixsl:if test="count(/shop/countries/country) &gt; 1">kraj dostawy</iaixsl:if></iaixsl:attribute>
+						<span>
+							<iaixsl:choose>
+								<iaixsl:when test="count(/shop/language/option) &gt; 1">
+									<iaixsl:attribute name="class">d-none d-md-inline-block flag flag_<iaixsl:value-of select="/shop/language/option[@selected='true']/@id"/></iaixsl:attribute>
+								</iaixsl:when>
+								<iaixsl:when test="count(/shop/currency/option) &gt; 1">
+									<iaixsl:attribute name="class">d-none d-md-inline-block flag_txt</iaixsl:attribute>
+									<iaixsl:value-of select="/shop/currency/option[@selected='true']/@symbol"/>
+								</iaixsl:when>
+								<iaixsl:when test="count(/shop/countries/country) &gt; 1">
+									<iaixsl:attribute name="class">d-none d-md-inline-block flag_txt</iaixsl:attribute>
+									<i class="icon-truck"/>
+								</iaixsl:when>
+							</iaixsl:choose>
+						</span>
 
-			<iaixsl:if test="count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true'">
-				<iaixsl:variable name="show_select_var"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true'] = /shop/select_language/language/option[@selected = 'true']">false</iaixsl:when><iaixsl:otherwise test="count(/shop/currency/option) &gt; 1"><iaixsl:value-of select="/shop/select_language/@show_select"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
+						<i class="icon-angle-down d-none d-md-inline-block"/>
 
-				<iaixsl:variable name="is_recommended_country"><iaixsl:if test="/shop/select_language/language/option[@recommended = 'true'] and not(/shop/select_language/language/option[@selected = 'true']/@id = /shop/select_language/language/option[@recommended = 'true']/@id)">true</iaixsl:if></iaixsl:variable>
-				<iaixsl:variable name="is_default_country"><iaixsl:if test="not(/shop/select_language/language/option[@recommended = 'true']) and /shop/select_language/language/option[@default = 'true'] and not(/shop/select_language/language/option[@selected = 'true']/@id = /shop/select_language/language/option[@default = 'true']/@id)">true</iaixsl:if></iaixsl:variable>
-				<iaixsl:variable name="recommended_country_lang"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']/../@id = /shop/select_language/language[@recommended = 'true']/@id"><iaixsl:value-of select="/shop/select_language/language[@recommended = 'true']/@id"/></iaixsl:when><iaixsl:otherwise>eng</iaixsl:otherwise></iaixsl:choose></iaixsl:when><iaixsl:otherwise>eng</iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
+					<iaixsl:if test="(count(/shop/currency/option) &gt; 1) or (count(/shop/language/option) &gt; 1) or (count(/shop/countries/country) &gt; 1)">
+						<form class="hover__element --right" action="/settings.php" method="post">
+							<iaixsl:if test="/shop/action/settings/@url">
+								<iaixsl:attribute name="action"><iaixsl:value-of select="/shop/action/settings/@url"/></iaixsl:attribute>
+							</iaixsl:if>
 
-				<script>
-					window.selectLanguageConfig = [<iaixsl:for-each select="/shop/select_language/language"><iaixsl:for-each select="option">{group:`<iaixsl:choose><iaixsl:when test="$is_recommended_country = 'true'"><iaixsl:value-of select="@recommended_group_name"/></iaixsl:when><iaixsl:when test="$is_default_country = 'true'"><iaixsl:value-of select="@default_group_name"/></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="@group"/></iaixsl:otherwise></iaixsl:choose>`,id:`<iaixsl:value-of select="@id"/>`,name: `<iaixsl:value-of select="text()"/>`,recommendedName: `<iaixsl:value-of select="@recommended_name"/>`,defaultName: `<iaixsl:value-of select="@default_name"/>`,selectedName: `<iaixsl:value-of select="@selected_name"/>`,currencyId: `<iaixsl:value-of select="@currency_id"/>`,currencySymbol: `<iaixsl:value-of select="@currency_symbol"/>`,<iaixsl:if test="@selected = 'true'">selected: true,</iaixsl:if><iaixsl:if test="@recommended = 'true'">recommended: true,</iaixsl:if><iaixsl:if test="@default = 'true'">default: true,</iaixsl:if>lang: [{site: `<iaixsl:value-of select="@site"/>`,name: `<iaixsl:value-of select="../@name"/>`,recommendedName:`<iaixsl:value-of select="../@recommended_name"/>`, defaultName:`<iaixsl:value-of select="../@default_name"/>`, id:`<iaixsl:value-of select="../@id"/>`, }]},</iaixsl:for-each></iaixsl:for-each>
-					];
-					window.selectLanguageParamsConfig = {show_select: &quot;<iaixsl:value-of select="$show_select_var"/>&quot;, recommended_lang: &quot;<iaixsl:value-of select="$recommended_country_lang"/>&quot;, is_recommended_country: &quot;<iaixsl:value-of select="$is_recommended_country"/>&quot;, is_default_country: &quot;<iaixsl:value-of select="$is_default_country"/>&quot;, country_first: &quot;<iaixsl:value-of select="/shop/select_language/@country_first"/>&quot;, selectedLangId: &quot;<iaixsl:for-each select="/shop/select_language/language"><iaixsl:if test="option[@selected = 'true']"><iaixsl:value-of select="@id"/></iaixsl:if></iaixsl:for-each>&quot;, };
-				</script>
+							<ul>
+								
+								<iaixsl:if test="count(/shop/language/option) &gt; 1">
+									<li>
+										<div class="form-group">
+											<span class="menu_settings_lang_label">Język</span>
 
-				<div class="select_language__open" tabindex="0"><iaixsl:attribute name="aria-label">Wybierz kraj dostawy i język</iaixsl:attribute><span><i class="icon-glob"/></span></div>
+											<iaixsl:for-each select="/shop/language/option">
+												<div class="radio">
+													<label>
+														<input type="radio" name="lang">
+															<iaixsl:if test="@selected='true'"><iaixsl:attribute name="checked">checked</iaixsl:attribute></iaixsl:if>
+															<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
+														</input>
+														<span>
+															<iaixsl:attribute name="class">flag flag_<iaixsl:value-of select="@id"/></iaixsl:attribute>
+														</span>
+														<span><iaixsl:value-of select="@name"/></span>
+													</label>
+												</div>
+											</iaixsl:for-each>
+										</div>
+									</li>
+								</iaixsl:if>
 
-				<div id="select_language" class="select_language">
-					<div class="select_language__header"><span data-txt="Wybierz kraj dostawy i język">Wybierz kraj dostawy i język</span></div>
+								<iaixsl:if test="count(/shop/currency/option) &gt; 1 or count(/shop/countries/country) &gt; 1">
+									<li>
+										<iaixsl:if test="count(/shop/currency/option) &gt; 1">
+											<div class="form-group">
+												<span for="menu_settings_curr">Waluta</span>
 
-					<div class="select_language__choose"/>
-					<form class="select_language__form" action="" method="post">
-						<iaixsl:if test="/shop/select_language/language/option[@selected = 'true']">
-							<iaixsl:attribute name="action"><iaixsl:value-of select="/shop/select_language/language/option[@selected = 'true']/@site"/></iaixsl:attribute>
-						</iaixsl:if>
-						<input type="hidden" name="redirection" value="redirected"/>
-						<a class="select_language__submit btn --large --solid" href="#select_language" data-txt="Zastosuj zmiany" title="Zastosuj zmiany">
-							<iaixsl:attribute name="title">Zastosuj zmiany</iaixsl:attribute>
-							Zastosuj zmiany
-						</a>
-						<a class="select_language__back" href="#select_language" data-txt="Wróć" title="Wróć">
-							<iaixsl:attribute name="title">Wróć</iaixsl:attribute>
-							Wróć
-						</a>
-					</form>
-				</div>
+												<div class="select-after">
+													<select class="form-control" name="curr" id="menu_settings_curr">
+														<iaixsl:attribute name="aria-label">Waluta</iaixsl:attribute>
+														<iaixsl:for-each select="/shop/currency/option">
+															<option>
+																<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
+																<iaixsl:choose>
+																	<iaixsl:when test="@selected='true'">
+																		<iaixsl:attribute name="selected">selected</iaixsl:attribute>
+																		<iaixsl:value-of select="@symbol"/>
+																	</iaixsl:when>
+																	<iaixsl:otherwise>
+																		<iaixsl:value-of select="@symbol"/> (1 <iaixsl:value-of select="/shop/currency/option[@selected='true']/@symbol"/> = <iaixsl:value-of select="@rate"/>  <iaixsl:value-of select="@symbol"/>)
+																	</iaixsl:otherwise>
+																</iaixsl:choose>
+															</option>
+														</iaixsl:for-each>
+													</select>
+												</div>
+											</div>
+										</iaixsl:if>
+										<iaixsl:if test="count(/shop/countries/country) &gt; 1">
+											<div class="form-group">
+												<span for="menu_settings_country">Dostawa do</span>
 
-				<div class="select_language --recommended">
+												<div class="select-after">
+													<select class="form-control" name="country" id="menu_settings_country">
+														<iaixsl:attribute name="aria-label">Dostawa do</iaixsl:attribute>
+														<iaixsl:for-each select="/shop/countries/country">
+															<option>
+																<iaixsl:if test="@selected='true'"><iaixsl:attribute name="selected">selected</iaixsl:attribute></iaixsl:if>
+																<iaixsl:attribute name="value"><iaixsl:value-of select="@id"/></iaixsl:attribute>
+																<iaixsl:value-of select="@name"/>
+															</option>
+														</iaixsl:for-each>
+													</select>
+												</div>
+											</div>
+										</iaixsl:if>
+									</li>
+								</iaixsl:if>
+								<li class="buttons">
+									<button class="btn --solid --large" type="submit">
+										Zastosuj zmiany
+									</button>
+								</li>
+							</ul>
+						</form>
+					</iaixsl:if>
+					</div>
+				</iaixsl:if>
+
+				<iaixsl:if test="count(/shop/select_language/language/option) &gt; 1 and /shop/select_language/@country_first = 'true'">
+					<iaixsl:variable name="show_select_var"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true'] = /shop/select_language/language/option[@selected = 'true']">false</iaixsl:when><iaixsl:otherwise test="count(/shop/currency/option) &gt; 1"><iaixsl:value-of select="/shop/select_language/@show_select"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
+
+					<iaixsl:variable name="is_recommended_country"><iaixsl:if test="/shop/select_language/language/option[@recommended = 'true'] and not(/shop/select_language/language/option[@selected = 'true']/@id = /shop/select_language/language/option[@recommended = 'true']/@id)">true</iaixsl:if></iaixsl:variable>
+					<iaixsl:variable name="is_default_country"><iaixsl:if test="not(/shop/select_language/language/option[@recommended = 'true']) and /shop/select_language/language/option[@default = 'true'] and not(/shop/select_language/language/option[@selected = 'true']/@id = /shop/select_language/language/option[@default = 'true']/@id)">true</iaixsl:if></iaixsl:variable>
+					<iaixsl:variable name="recommended_country_lang"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']/../@id = /shop/select_language/language[@recommended = 'true']/@id"><iaixsl:value-of select="/shop/select_language/language[@recommended = 'true']/@id"/></iaixsl:when><iaixsl:otherwise>eng</iaixsl:otherwise></iaixsl:choose></iaixsl:when><iaixsl:otherwise>eng</iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
+
+					<script>
+						window.selectLanguageConfig = [<iaixsl:for-each select="/shop/select_language/language"><iaixsl:for-each select="option">{group:`<iaixsl:choose><iaixsl:when test="$is_recommended_country = 'true'"><iaixsl:value-of select="@recommended_group_name"/></iaixsl:when><iaixsl:when test="$is_default_country = 'true'"><iaixsl:value-of select="@default_group_name"/></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="@group"/></iaixsl:otherwise></iaixsl:choose>`,id:`<iaixsl:value-of select="@id"/>`,name: `<iaixsl:value-of select="text()"/>`,recommendedName: `<iaixsl:value-of select="@recommended_name"/>`,defaultName: `<iaixsl:value-of select="@default_name"/>`,selectedName: `<iaixsl:value-of select="@selected_name"/>`,currencyId: `<iaixsl:value-of select="@currency_id"/>`,currencySymbol: `<iaixsl:value-of select="@currency_symbol"/>`,<iaixsl:if test="@selected = 'true'">selected: true,</iaixsl:if><iaixsl:if test="@recommended = 'true'">recommended: true,</iaixsl:if><iaixsl:if test="@default = 'true'">default: true,</iaixsl:if>lang: [{site: `<iaixsl:value-of select="@site"/>`,name: `<iaixsl:value-of select="../@name"/>`,recommendedName:`<iaixsl:value-of select="../@recommended_name"/>`, defaultName:`<iaixsl:value-of select="../@default_name"/>`, id:`<iaixsl:value-of select="../@id"/>`, }]},</iaixsl:for-each></iaixsl:for-each>
+						];
+						window.selectLanguageParamsConfig = {show_select: &quot;<iaixsl:value-of select="$show_select_var"/>&quot;, recommended_lang: &quot;<iaixsl:value-of select="$recommended_country_lang"/>&quot;, is_recommended_country: &quot;<iaixsl:value-of select="$is_recommended_country"/>&quot;, is_default_country: &quot;<iaixsl:value-of select="$is_default_country"/>&quot;, country_first: &quot;<iaixsl:value-of select="/shop/select_language/@country_first"/>&quot;, selectedLangId: &quot;<iaixsl:for-each select="/shop/select_language/language"><iaixsl:if test="option[@selected = 'true']"><iaixsl:value-of select="@id"/></iaixsl:if></iaixsl:for-each>&quot;, };
+					</script>
+
+					<div class="select_language__open" tabindex="0"><iaixsl:attribute name="aria-label">Wybierz kraj dostawy i język</iaixsl:attribute><span><i class="icon-glob"/></span></div>
+
+					<div id="select_language" class="select_language">
+						<div class="select_language__header"><span data-txt="Wybierz kraj dostawy i język">Wybierz kraj dostawy i język</span></div>
+
+						<div class="select_language__choose"/>
+						<form class="select_language__form" action="" method="post">
+							<iaixsl:if test="/shop/select_language/language/option[@selected = 'true']">
+								<iaixsl:attribute name="action"><iaixsl:value-of select="/shop/select_language/language/option[@selected = 'true']/@site"/></iaixsl:attribute>
+							</iaixsl:if>
+							<input type="hidden" name="redirection" value="redirected"/>
+							<a class="select_language__submit btn --large --solid" href="#select_language" data-txt="Zastosuj zmiany" title="Zastosuj zmiany">
+								<iaixsl:attribute name="title">Zastosuj zmiany</iaixsl:attribute>
+								Zastosuj zmiany
+							</a>
+							<a class="select_language__back" href="#select_language" data-txt="Wróć" title="Wróć">
+								<iaixsl:attribute name="title">Wróć</iaixsl:attribute>
+								Wróć
+							</a>
+						</form>
+					</div>
+
+					<div class="select_language --recommended">
 					<iaixsl:variable name="recommended_country"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']/../@id = /shop/select_language/language[@recommended = 'true']/@id"><iaixsl:value-of select="/shop/select_language/language/option[@recommended = 'true']/@recommended_name"/></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="/shop/select_language/language/option[@recommended = 'true']/@default_name"/></iaixsl:otherwise></iaixsl:choose></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="/shop/select_language/language/option[@default = 'true']/@default_name"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
 					<iaixsl:variable name="recommended_country_id"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']"><iaixsl:value-of select="/shop/select_language/language/option[@recommended = 'true']/@id"/></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="/shop/select_language/language/option[@default = 'true']/@id"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
 					<iaixsl:variable name="recommended_language"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']"><iaixsl:choose><iaixsl:when test="/shop/select_language/language/option[@recommended = 'true']/../@id = /shop/select_language/language[@recommended = 'true']/@id"><iaixsl:value-of select="/shop/select_language/language/option[@recommended = 'true']/../@recommended_name"/></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="/shop/select_language/language/option[@recommended = 'true']/../@default_name"/></iaixsl:otherwise></iaixsl:choose></iaixsl:when><iaixsl:otherwise> <iaixsl:value-of select="/shop/select_language/language/option[@default = 'true']/../@default_name"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
@@ -706,7 +707,9 @@
 			</iaixsl:if>
 		</div>
 	</iaixsl:if>
+	</div>
 
+	<div class="menu_top__actions">
 	<div class="account_links">
 		<a class="account_links__item">
 			<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/action/login/@url"/></iaixsl:attribute>
@@ -888,6 +891,8 @@
       </div>
     </div>
   </template>
+
+</div>
 
 </div>
 <!-- (menu_categories, 614c5d2d149061.30454363.19)-->
