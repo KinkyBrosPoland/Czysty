@@ -2194,6 +2194,19 @@
   </div>
 
 </iaixsl:if>
+<!-- (main_hero, 20240330.1)--->
+<section class="hero section" id="main_hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Twoja codzienna pielęgnacja bez kompromisów</p>
+      <h2 class="hero__title">Czyste formuły, skuteczne działanie i szybka dostawa do Twojej łazienki.</h2>
+      <div class="hero__actions">
+        <a class="btn --primary hero__cta" href="/search.php?promotion=1">Kup teraz</a>
+        <a class="btn --secondary hero__cta" href="/search.php?new=1">Zobacz nowości</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- (main_cms, 60dd8e795210d5.33684480.3)-->
 	<iaixsl:if test="page/text[@id='13']">
 			<iaixsl:for-each select="page/text[@id='13']">
@@ -2296,6 +2309,21 @@
         </div>
       </div>
     </div>
+  </template>
+  <template class="hotspot_add_to_basket">
+    <form class="add_to_basket" method="post" action="#">
+      <input type="hidden" name="product" value=""/>
+      <input type="hidden" name="size" value=""/>
+      <input class="add_to_basket__more_input buy__more_input" type="hidden" name="number" value="1" data-prev="1"/>
+      <button class="add_to_basket__button btn --primary" type="submit" data-text="Dodaj do koszyka">
+        <span>Dodaj do koszyka</span>
+      </button>
+    </form>
+  </template>
+  <template class="hotspot_add_to_basket_link">
+    <a class="add_to_basket__link btn --primary" tabindex="0">
+      <span>Dodaj do koszyka</span>
+    </a>
   </template>
   <template class="hotspot_opinion">
 		<div class="product__opinion">

@@ -654,3 +654,15 @@ span.dymekCountryName{clear:both;display:block}span.dymekTel1{clear:left;display
 }.instagram.--slider{--swiper-navigation-sides-offset:15px;--uninitialized-slider-gap:16px}@media(min-width:979px){.instagram.--slider{--swiper-navigation-sides-offset:0}}.instagram.--slider .swiper-button-prev,.instagram.--slider .swiper-button-next{display:none}@media(min-width:979px){.instagram.--slider .swiper-button-prev,.instagram.--slider .swiper-button-next{display:flex}}.instagram.--slider .swiper:not(.swiper-initialized) .instagram__items{display:grid;gap:var(--uninitialized-slider-gap);grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(min-width:979px){.instagram.--slider .swiper:not(.swiper-initialized) .instagram__items{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:978.89px){.instagram.--slider .swiper:not(.swiper-initialized) .instagram__item:nth-child(n+3){display:none}}@media(min-width:979px){.instagram.--slider .swiper:not(.swiper-initialized) .instagram__item:nth-child(n+5){display:none}}.instagram.--slider.--skeleton .swiper:not(.swiper-initialized) .intagram__item{min-height:25rem}.instagram.--slider .instagram__item{height:unset}
 .instagram.--slider .instagram__item a{aspect-ratio:initial}@media(min-width:979px){aside #instagram .headline__wrapper{flex-direction:column}aside #instagram .headline__wrapper .headline__after{margin-left:0}}
+:root{--headline-color:#1f2933;--headline-color-hover:#111827;--products-gap:16px 16px;--product-content-background:#fff}
+@media(min-width:757px){:root{--products-gap:16px 16px}}
+.products__wrapper{padding-left:16px;padding-right:16px}
+.product{border:1px solid #e5e7eb}
+.product__name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3;min-height:calc(1.3em * 2);overflow:hidden}
+.headline__name{font-size:clamp(20px,2.2vw,24px);font-weight:700;color:var(--headline-color)}
+.product .label.--promo,.product .promo{background:#fce7f3;color:#9d174d;border-radius:999px;padding:2px 8px;font-weight:600;text-transform:none}
+.hero{background:#f8fafc;border-radius:12px;margin:16px;padding:24px 16px}
+@media(min-width:757px){.hero{margin:24px auto;padding:32px;max-width:var(--content-max-width)}}
+.hero__eyebrow{font-size:1.2rem;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:8px}
+.hero__title{font-size:clamp(22px,3vw,32px);color:#111827;margin-bottom:16px;line-height:1.2}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px}

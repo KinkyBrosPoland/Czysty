@@ -1400,8 +1400,8 @@ body#trusted_shops_fix div[id*='tscard'] {
 	// jak właściwość kolor w linkach - element "a" anchor
 	@headlineLowLightness: if(lightness(@less_iaicolorscheme_background_text_color) < 50, 0.8, 0.6);
 	// Kolor nagłówków
-	--headline-color: @less_iaicolorscheme_background_text_color;
-	--headline-color-hover: @less_iaicolorscheme_background_link_color;
+	--headline-color: #1f2933;
+	--headline-color-hover: #111827;
 	--headline-opacity-hover: 1;
 
 	// Paddingi
@@ -1568,11 +1568,11 @@ body#trusted_shops_fix div[id*='tscard'] {
 	 *
 	 */
 	--products-grid-template-columns: repeat(2, minmax(0, 1fr));
-	--products-gap: var(--padding-xl) var(--dimension-gap);
+	--products-gap: 16px 16px;
 
 	@media @tablet {
 		--products-grid-template-columns: repeat(3, minmax(0, 1fr));
-		--products-gap: var(--padding-4xl) var(--dimension-gap);
+		--products-gap: 16px 16px;
 	}
 
 	--product-border-radius: @less_iaicolorscheme_border_radius_value;
@@ -1631,7 +1631,7 @@ body#trusted_shops_fix div[id*='tscard'] {
 	--product-content-padding: 0 0 var(--padding-xs) 0;
 
 	// Tło sekcji w kafelku produktowym
-	--product-content-background: none;
+	--product-content-background: #fff;
 
 	// Kolor dla pozostałych elementów w kafelku produktowym
 	--product-content-color: @less_iaicolorscheme_background_text_color;
@@ -7883,9 +7883,15 @@ html.--hide-percentage-discounts {
 	gap: var(--products-gap);
 }
 
+.products__wrapper {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
 .product {
 	background: var(--product-content-background);
 	color: var(--product-content-color);
+	border: 1px solid #e5e7eb;
 	border-radius: var(--product-border-radius);
 	width: 100%;
 	position: relative;
@@ -7960,6 +7966,11 @@ html.--hide-percentage-discounts {
 		color: var(--product-name-color);
 		text-transform: var(--product-name-text-transform);
 		margin-bottom: var(--product-name-margin-bottom);
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		line-height: 1.3;
+		min-height: calc(1.3em * 2);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		text-decoration: none;
@@ -8109,6 +8120,56 @@ html.--hide-percentage-discounts {
 				}
 			}
 		}
+	}
+}
+
+.headline__name {
+	font-size: clamp(20px, 2.2vw, 24px);
+	font-weight: 700;
+	color: var(--headline-color);
+}
+
+.product .label.--promo,
+.product .promo {
+	background: #fce7f3;
+	color: #9d174d;
+	border-radius: 999px;
+	padding: 2px 8px;
+	font-weight: 600;
+	text-transform: none;
+}
+
+.hero {
+	background: #f8fafc;
+	border-radius: 12px;
+	margin: 16px;
+	padding: 24px 16px;
+
+	@media @tablet {
+		margin: 24px auto;
+		padding: 32px;
+		max-width: var(--content-max-width);
+	}
+
+	&__eyebrow {
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #6b7280;
+		margin-bottom: 8px;
+	}
+
+	&__title {
+		font-size: clamp(22px, 3vw, 32px);
+		color: #111827;
+		margin-bottom: 16px;
+		line-height: 1.2;
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
 	}
 }
 
@@ -55588,4 +55649,3 @@ div:nth-child(3) > .products-bought__product {
 	margin-left: -10px;
 }
 /*component_css_end*/
-
