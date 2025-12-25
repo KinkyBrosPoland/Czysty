@@ -2129,12 +2129,13 @@
                         </iaixsl:if>
                       </picture>
                     </iaixsl:when>
-                    <iaixsl:otherwise>
-                      <iaixsl:value-of disable-output-escaping="yes" select="text"/>
-                    </iaixsl:otherwise>
-                  </iaixsl:choose>
-                  <iaixsl:if test="not($bannerName = '')">
-                    <div class="main_slider__content container max-width-1200">
+                  <iaixsl:otherwise>
+                    <iaixsl:value-of disable-output-escaping="yes" select="text"/>
+                  </iaixsl:otherwise>
+                </iaixsl:choose>
+                <span class="main_slider__overlay" aria-hidden="true"></span>
+                <iaixsl:if test="not($bannerName = '')">
+                  <div class="main_slider__content container max-width-1200">
                       <h2 class="main_slider__label"><iaixsl:value-of select="$bannerName"/></h2>
                       <iaixsl:if test="not($bannerDescription = '')">
                         <p class="main_slider__description"><iaixsl:value-of select="$bannerDescription"/></p>
