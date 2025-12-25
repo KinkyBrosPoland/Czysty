@@ -2840,7 +2840,7 @@
 
 			<div class="article__block">
 				<iaixsl:for-each select="page/mainpage2/item">
-					<article class="article__item">
+					<article class="article__item --card">
 						
 						<iaixsl:choose>
 							<iaixsl:when test="image/@src and image/@src != ''">
@@ -2974,7 +2974,7 @@
 
 			<div class="article__block">
 				<iaixsl:for-each select="page/mainpage1/item">
-					<article class="article__item">
+					<article class="article__item --card">
 						
 						<iaixsl:choose>
 							<iaixsl:when test="image/@src and image/@src != ''">
