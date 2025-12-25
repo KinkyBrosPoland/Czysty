@@ -3459,15 +3459,36 @@
 						</iaixsl:choose>
 					</span>
 				</h1>
-				<iaixsl:if test="not(/shop/page/products/@hideproducts = 'true')">
-					<span class="search_name__total">( ilość produktów: <span class="search_name__total_value"><iaixsl:value-of select="/shop/page/products/navigation/@total"/></span> )</span>
-				</iaixsl:if>
-			</section>
+			<iaixsl:if test="not(/shop/page/products/@hideproducts = 'true')">
+				<span class="search_name__total">( ilość produktów: <span class="search_name__total_value"><iaixsl:value-of select="/shop/page/products/navigation/@total"/></span> )</span>
+			</iaixsl:if>
+		</section>
 
-			<iaixsl:if test="not(/shop/page/products/additional/category_list/description = '') and (/shop/page/products/additional/category_list/description)">
-				<iaixsl:if test="(/shop/page/products/@hideproducts = 'true' ) or ((/shop/page/products/navigation/item[1]/@counter = 1) and (/shop/page/products/navigation/item[1]/@type = 'current'))">
-					<section class="search_description --top --skeleton cm">
-						<div class="search_description__wrapper">
+		<section class="search_toolbar">
+			<form class="search_toolbar__form" action="/search.php" method="get">
+				<label class="sr-only" for="search_toolbar_input">Szukaj produktów</label>
+				<input class="search_toolbar__input" id="search_toolbar_input" type="search" name="text" placeholder="Szukaj w produktach" autocomplete="off"/>
+				<button class="btn --secondary --solid search_toolbar__submit" type="submit">
+					<span class="search_toolbar__submit_label">Szukaj</span>
+				</button>
+			</form>
+			<div class="search_toolbar__controls">
+				<div class="search_toolbar__chips" aria-label="Szybkie filtry">
+					<button class="search_toolbar__chip" type="button">Promocje</button>
+					<button class="search_toolbar__chip" type="button">Nowości</button>
+					<button class="search_toolbar__chip" type="button">Cena</button>
+				</div>
+				<div class="search_toolbar__actions">
+					<a class="btn --solid --small search_toolbar__action" href="#menu_filter">Filtry</a>
+					<a class="btn --outline --small search_toolbar__action" href="#select_top_sort">Sortuj</a>
+				</div>
+			</div>
+		</section>
+
+		<iaixsl:if test="not(/shop/page/products/additional/category_list/description = '') and (/shop/page/products/additional/category_list/description)">
+			<iaixsl:if test="(/shop/page/products/@hideproducts = 'true' ) or ((/shop/page/products/navigation/item[1]/@counter = 1) and (/shop/page/products/navigation/item[1]/@type = 'current'))">
+				<section class="search_description --top --skeleton cm">
+					<div class="search_description__wrapper">
 							<iaixsl:value-of disable-output-escaping="yes" select="/shop/page/products/additional/category_list/description"/>
 						</div>
 					</section>
