@@ -4998,6 +4998,15 @@
 
 		</section>
 
+		<iaixsl:if test="/shop/page/@type = 'basketedit' and /shop/basket/@count &gt; 0">
+			<div class="sticky-cta --basket">
+				<a class="sticky-cta__button btn --solid --large">
+					<iaixsl:attribute name="href"><iaixsl:value-of select="/shop/action/order1/@url"/></iaixsl:attribute>
+					Przejdź do płatności
+				</a>
+			</div>
+		</iaixsl:if>
+
 		<iaixsl:if test="/shop/basket/shipping_time"> </iaixsl:if>
 		<iaixsl:if test="/shop/page/basket-details/product/price/@detalprice_net_formatted"> </iaixsl:if>
 		<iaixsl:if test="/shop/page/basket-details/product/price/@maxprice_formatted"> </iaixsl:if>
@@ -5567,6 +5576,26 @@
 			</iaixsl:if>
 		</div>
 	</iaixsl:if>
+	<div class="basket__secure_payments">
+		<h2 class="basket__secure_payments_title">Bezpieczne płatności</h2>
+		<div class="basket__secure_payments_icons" aria-hidden="true">
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 18a8.8 8.8 0 0 1-6-8.3V6.3l6-2.2 6 2.2v5.4A8.8 8.8 0 0 1 12 20Zm3-10-4 4-2-2 1.4-1.4L11 12.2l2.6-2.6L15 10Z" fill="currentColor"/>
+				</svg>
+			</span>
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M3 6h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 3v2h18V9H3Zm3 6h4v-2H6v2Z" fill="currentColor"/>
+				</svg>
+			</span>
+			<span class="basket__secure_payments_icon">
+				<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+					<path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Zm2 6h2v-3h-2v3Z" fill="currentColor"/>
+				</svg>
+			</span>
+		</div>
+	</div>
 <!-- (division, 66e2f82c813af3.98668798.4)-->
   
   <iaixsl:if test="/shop/allow_division_order/@is_active = 'true' and not(count(page/basket-details/product[@division='later']) = 0 or count(page/basket-details/product[@division='now']) = 0)">
@@ -6270,7 +6299,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">

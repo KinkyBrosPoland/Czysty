@@ -1596,6 +1596,34 @@
 						</iaixsl:otherwise>
 					</iaixsl:choose>
 
+					<iaixsl:if test="page/@type = 'main'">
+						<iaixsl:variable name="free_shipping_limit"><iaixsl:value-of select="/shop/basket/@shippinglimitfree_formatted"/></iaixsl:variable>
+						<div class="listing_badges listing_badges--hero">
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M3 7h11v5h4l3 3v2h-2a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H1v-2h2V7Zm2 10a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm12 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">
+									Darmowa dostawa od
+									<iaixsl:choose>
+										<iaixsl:when test="$free_shipping_limit != ''"><iaixsl:value-of select="$free_shipping_limit"/></iaixsl:when>
+										<iaixsl:otherwise>X zł</iaixsl:otherwise>
+									</iaixsl:choose>
+								</span>
+							</div>
+							<div class="listing_badge">
+								<span class="listing_badge__icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+										<path d="M12 5a7 7 0 1 1-6.32 4H3l3.5-3.5L10 9H7.64A5 5 0 1 0 12 7v-2Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<span class="listing_badge__text">Zwroty 30 dni</span>
+							</div>
+						</div>
+					</iaixsl:if>
+
 					<!-- (menu_messages, 60dd8e79b18501.50382803.13)-->
 
         <iaixsl:variable name="rebates_code_used">Podany kod rabatowy został już wykorzystany.</iaixsl:variable>
@@ -2195,6 +2223,19 @@
   </div>
 
 </iaixsl:if>
+<!-- (main_hero, 20240330.1)--->
+<section class="hero section" id="main_hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Twoja codzienna pielęgnacja bez kompromisów</p>
+      <h2 class="hero__title">Czyste formuły, skuteczne działanie i szybka dostawa do Twojej łazienki.</h2>
+      <div class="hero__actions">
+        <a class="btn --primary hero__cta" href="/search.php?promotion=1">Kup teraz</a>
+        <a class="btn --secondary hero__cta" href="/search.php?new=1">Zobacz nowości</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- (main_cms, 60dd8e795210d5.33684480.3)-->
 	<iaixsl:if test="page/text[@id='13']">
 			<iaixsl:for-each select="page/text[@id='13']">
@@ -2263,7 +2304,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2297,6 +2338,21 @@
         </div>
       </div>
     </div>
+  </template>
+  <template class="hotspot_add_to_basket">
+    <form class="add_to_basket" method="post" action="#">
+      <input type="hidden" name="product" value=""/>
+      <input type="hidden" name="size" value=""/>
+      <input class="add_to_basket__more_input buy__more_input" type="hidden" name="number" value="1" data-prev="1"/>
+      <button class="add_to_basket__button btn --primary" type="submit" data-text="Dodaj do koszyka">
+        <span>Dodaj do koszyka</span>
+      </button>
+    </form>
+  </template>
+  <template class="hotspot_add_to_basket_link">
+    <a class="add_to_basket__link btn --primary" tabindex="0">
+      <span>Dodaj do koszyka</span>
+    </a>
   </template>
   <template class="hotspot_opinion">
 		<div class="product__opinion">
@@ -2480,7 +2536,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2610,7 +2666,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
@@ -2740,7 +2796,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">

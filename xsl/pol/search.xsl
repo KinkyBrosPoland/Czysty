@@ -3459,15 +3459,36 @@
 						</iaixsl:choose>
 					</span>
 				</h1>
-				<iaixsl:if test="not(/shop/page/products/@hideproducts = 'true')">
-					<span class="search_name__total">( ilość produktów: <span class="search_name__total_value"><iaixsl:value-of select="/shop/page/products/navigation/@total"/></span> )</span>
-				</iaixsl:if>
-			</section>
+			<iaixsl:if test="not(/shop/page/products/@hideproducts = 'true')">
+				<span class="search_name__total">( ilość produktów: <span class="search_name__total_value"><iaixsl:value-of select="/shop/page/products/navigation/@total"/></span> )</span>
+			</iaixsl:if>
+		</section>
 
-			<iaixsl:if test="not(/shop/page/products/additional/category_list/description = '') and (/shop/page/products/additional/category_list/description)">
-				<iaixsl:if test="(/shop/page/products/@hideproducts = 'true' ) or ((/shop/page/products/navigation/item[1]/@counter = 1) and (/shop/page/products/navigation/item[1]/@type = 'current'))">
-					<section class="search_description --top --skeleton cm">
-						<div class="search_description__wrapper">
+		<section class="search_toolbar">
+			<form class="search_toolbar__form" action="/search.php" method="get">
+				<label class="sr-only" for="search_toolbar_input">Szukaj produktów</label>
+				<input class="search_toolbar__input" id="search_toolbar_input" type="search" name="text" placeholder="Szukaj w produktach" autocomplete="off"/>
+				<button class="btn --secondary --solid search_toolbar__submit" type="submit">
+					<span class="search_toolbar__submit_label">Szukaj</span>
+				</button>
+			</form>
+			<div class="search_toolbar__controls">
+				<div class="search_toolbar__chips" aria-label="Szybkie filtry">
+					<button class="search_toolbar__chip" type="button">Promocje</button>
+					<button class="search_toolbar__chip" type="button">Nowości</button>
+					<button class="search_toolbar__chip" type="button">Cena</button>
+				</div>
+				<div class="search_toolbar__actions">
+					<a class="btn --solid --small search_toolbar__action" href="#menu_filter">Filtry</a>
+					<a class="btn --outline --small search_toolbar__action" href="#select_top_sort">Sortuj</a>
+				</div>
+			</div>
+		</section>
+
+		<iaixsl:if test="not(/shop/page/products/additional/category_list/description = '') and (/shop/page/products/additional/category_list/description)">
+			<iaixsl:if test="(/shop/page/products/@hideproducts = 'true' ) or ((/shop/page/products/navigation/item[1]/@counter = 1) and (/shop/page/products/navigation/item[1]/@type = 'current'))">
+				<section class="search_description --top --skeleton cm">
+					<div class="search_description__wrapper">
 							<iaixsl:value-of disable-output-escaping="yes" select="/shop/page/products/additional/category_list/description"/>
 						</div>
 					</section>
@@ -3808,6 +3829,31 @@
 			
     	<iaixsl:variable name="var_omnibus_enabled"><iaixsl:if test="/shop/@omnibus = 1">true</iaixsl:if></iaixsl:variable>
     	
+			<iaixsl:variable name="free_shipping_limit"><iaixsl:value-of select="/shop/basket/@shippinglimitfree_formatted"/></iaixsl:variable>
+			<div class="listing_badges listing_badges--listing">
+				<div class="listing_badge">
+					<span class="listing_badge__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+							<path d="M3 7h11v5h4l3 3v2h-2a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H1v-2h2V7Zm2 10a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm12 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z" fill="currentColor"/>
+						</svg>
+					</span>
+					<span class="listing_badge__text">
+						Darmowa dostawa od
+						<iaixsl:choose>
+							<iaixsl:when test="$free_shipping_limit != ''"><iaixsl:value-of select="$free_shipping_limit"/></iaixsl:when>
+							<iaixsl:otherwise>X zł</iaixsl:otherwise>
+						</iaixsl:choose>
+					</span>
+				</div>
+				<div class="listing_badge">
+					<span class="listing_badge__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" role="presentation" focusable="false">
+							<path d="M12 5a7 7 0 1 1-6.32 4H3l3.5-3.5L10 9H7.64A5 5 0 1 0 12 7v-2Z" fill="currentColor"/>
+						</svg>
+					</span>
+					<span class="listing_badge__text">Zwroty 30 dni</span>
+				</div>
+			</div>
 
 			<iaixsl:for-each select="/shop/page/products/product">
 				<div class="product">
@@ -4257,6 +4303,35 @@
 								<iaixsl:value-of disable-output-escaping="yes" select="name"/>
 							</a>
 						</h2>
+
+						<iaixsl:variable name="product_rating_avg">
+							<iaixsl:choose>
+								<iaixsl:when test="comments/@avg"><iaixsl:value-of select="comments/@avg"/></iaixsl:when>
+								<iaixsl:when test="opinions/@avg"><iaixsl:value-of select="opinions/@avg"/></iaixsl:when>
+							</iaixsl:choose>
+						</iaixsl:variable>
+						<iaixsl:variable name="product_rating_count">
+							<iaixsl:choose>
+								<iaixsl:when test="comments/@count"><iaixsl:value-of select="comments/@count"/></iaixsl:when>
+								<iaixsl:when test="comments/@all"><iaixsl:value-of select="comments/@all"/></iaixsl:when>
+								<iaixsl:when test="opinions/@count"><iaixsl:value-of select="opinions/@count"/></iaixsl:when>
+								<iaixsl:when test="opinions/@all"><iaixsl:value-of select="opinions/@all"/></iaixsl:when>
+							</iaixsl:choose>
+						</iaixsl:variable>
+						<iaixsl:if test="$product_rating_avg != ''">
+							<div class="product__rating">
+								<span class="product__rating_stars" aria-hidden="true">
+									<i><iaixsl:attribute name="class">icon-star<iaixsl:if test="number($product_rating_avg) &gt; 0.5"> --active</iaixsl:if></iaixsl:attribute></i>
+									<i><iaixsl:attribute name="class">icon-star<iaixsl:if test="number($product_rating_avg) &gt; 1.5"> --active</iaixsl:if></iaixsl:attribute></i>
+									<i><iaixsl:attribute name="class">icon-star<iaixsl:if test="number($product_rating_avg) &gt; 2.5"> --active</iaixsl:if></iaixsl:attribute></i>
+									<i><iaixsl:attribute name="class">icon-star<iaixsl:if test="number($product_rating_avg) &gt; 3.5"> --active</iaixsl:if></iaixsl:attribute></i>
+									<i><iaixsl:attribute name="class">icon-star<iaixsl:if test="number($product_rating_avg) &gt; 4.5"> --active</iaixsl:if></iaixsl:attribute></i>
+								</span>
+								<iaixsl:if test="$product_rating_count != ''">
+									<span class="product__rating_count">(<iaixsl:value-of select="$product_rating_count"/>)</span>
+								</iaixsl:if>
+							</div>
+						</iaixsl:if>
 
 						<iaixsl:variable name="var_unit"><iaixsl:choose><iaixsl:when test="not(price/@price_unit_formatted)"><iaixsl:value-of select="sizes/@unit_single"/></iaixsl:when><iaixsl:when test="sizes/@unit_sellby &gt; 1"><iaixsl:value-of select="sizes/@unit_plural"/></iaixsl:when><iaixsl:otherwise><iaixsl:value-of select="sizes/@unit_single"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
 						<iaixsl:variable name="var_sellby"><iaixsl:choose><iaixsl:when test="not(price/@price_unit_formatted)">1</iaixsl:when><iaixsl:otherwise><iaixsl:value-of select="sizes/@unit_sellby"/></iaixsl:otherwise></iaixsl:choose></iaixsl:variable>
@@ -4786,7 +4861,7 @@
         <span class="product__yousave --label"/>
   			<span class="product__yousave --value"/>
       </div>
-      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/></a>
+      <a class="product__icon d-flex justify-content-center align-items-center" tabindex="-1"><strong class="label_icons --hidden"/><span class="product__quick-add" role="button" tabindex="0" aria-label="Quick add"><i class="icon-basket"/></span></a>
       <div class="product__content_wrapper">
         <a class="product__name" tabindex="0"/>
         <div class="product__prices mb-auto">
